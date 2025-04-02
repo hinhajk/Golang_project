@@ -7,5 +7,5 @@ import (
 
 func main() {
 	//_case.Crud()
-	_case.Session()
+	_case.Crud()
 }

@@ -5,6 +5,15 @@ import (
 	"time"
 )
 
+var teacherTemp = Teacher{
+	Name:     "nick",
+	Age:      48,
+	Roles:    []string{"普通用户", "讲师"},
+	Birthday: time.Now().Unix(),
+	Salary:   1234.1234,
+	Email:    "nick@gmail.com",
+}
+
 func Crud() {
 	t := Teacher{
 		Name:     "nick",
@@ -27,12 +36,22 @@ func Crud() {
 	// 更改
 	t1.Name = "King"
 	t1.Age = 31
-	DB.Save(t1) //保存记录
-	//DB.Where("name = ?", "King").First(&t1) //返回值也是一个链式结构，可以再次查询
-	//DB.Where("name = ?", "King")
+	DB.Save(t1)                             //保存记录
+	DB.Where("name = ?", "King").First(&t1) //返回值也是一个链式结构，可以再次查询
+	DB.Where("name = ?", "King")
 
 	// 使用关联语句就是使用表联查，会比较慢
 
 	// 删除
 	DB.Delete(&t1)
+
+	//批量插入
+	var teachers = []Teacher{{Name: "liu", Age: 60, Salary: 1234.1234, Email: "nick@gmail.com"}, {Name: "lihua", Age: 31}}
+	DB.Create(&teachers)
+	for _, tt := range teachers {
+		fmt.Println(tt.ID)
+	}
+
+	// 反向选择
+
 }
