@@ -10,7 +10,7 @@ type CreateTasksService struct {
 	TaskName  string `form:"tasks_name"  json:"tasks_name"`
 	User      models.User
 	Uid       uint
-	Title     string `gorm:"index;not null"`
+	Title     string `gorm:"index;not null" json:"title"`
 	Status    int    `json:"status" form:"status"`
 	Content   string
 	StartTime int
