@@ -53,6 +53,7 @@ func (u *UserService) Register() serializer.Response {
 	return serializer.Response{
 		Status:  200,
 		Message: "用户注册成功",
+		Data:    serializer.BuildUser(user),
 	}
 }
 
