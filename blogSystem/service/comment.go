@@ -7,8 +7,9 @@ import (
 
 type CommentService struct {
 	Content string `json:"comment_content"`
-	User    models.User
-	Blog    models.Blog
+	//`json:"comment_content"`该操作是由于在定义接口时常常将名字大写，而form表单里面是小写
+	User models.User
+	Blog models.Blog
 }
 
 // CreateCommentService 发布评论

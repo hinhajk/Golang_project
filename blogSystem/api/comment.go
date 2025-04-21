@@ -10,6 +10,7 @@ import (
 func CreateComment(c *gin.Context) {
 	var createCommentService service.CommentService
 	claim, _ := utils.ParseToken(c.GetHeader("Authorization"))
+	//c.ShouldBind(&createCommentService)，该操作将表单中的对应字段绑定到了结构体createCommentService中
 	if err := c.ShouldBind(&createCommentService); err == nil {
 		res := createCommentService.CreateCommentService(claim.Id, c.Param("bid"))
 		c.JSON(200, res)
